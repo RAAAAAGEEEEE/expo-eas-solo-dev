@@ -1,0 +1,49 @@
+{
+  "$comment_cli": "eas-cli exige une version minimale pour lire ce fichier. Vérifie la dernière version stable avant de fixer ce nombre, ne le devine pas.",
+  "cli": {
+    "version": ">= 20.0.0",
+    "appVersionSource": "remote"
+  },
+
+  "$comment_build": "Chaque profil correspond à un usage distinct. Ne pas fusionner development et production.",
+  "build": {
+    "development": {
+      "$comment": "Build de dev avec expo-dev-client — se recharge à chaud en JS pur, ne consomme un nouveau build que si une dépendance native change.",
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "preview": {
+      "$comment": "Build interne pour tester une version proche de la prod (ex. avant TestFlight), sur un channel OTA dédié.",
+      "distribution": "internal",
+      "channel": "preview",
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "e2e-test": {
+      "$comment": "Simulateur iOS cloud — permet de faire tourner Maestro (E2E) sans appareil physique ni Mac.",
+      "distribution": "internal",
+      "channel": "e2e-test",
+      "ios": {
+        "simulator": true,
+        "resourceClass": "m-medium"
+      }
+    },
+    "production": {
+      "$comment": "autoIncrement gère le build number automatiquement — évite les conflits de version lors des soumissions répétées.",
+      "autoIncrement": true,
+      "channel": "production",
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    }
+  },
+
+  "$comment_submit": "eas submit --profile production envoie directement à App Store Connect / Play Console depuis le cloud EAS, sans passer par Xcode/Transporter.",
+  "submit": {
+    "production": {}
+  }
+}
