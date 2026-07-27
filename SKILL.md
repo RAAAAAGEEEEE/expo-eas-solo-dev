@@ -161,3 +161,11 @@ import { accessibilityLabel, buttonStyle, controlSize, disabled, frame, tint } f
 - [resources/credentials-device-pairing-checklist.md](resources/credentials-device-pairing-checklist.md) — checklist pas-à-pas login EAS, device pairing, credentials Apple
 - [resources/appstore-submission-checklist.md](resources/appstore-submission-checklist.md) — checklist complète de soumission App Store Connect
 - [resources/revenuecat-api-v2.md](resources/revenuecat-api-v2.md) — cheatsheet API v2 RevenueCat (curl) : entitlements, offerings, produits, packages, clé Achat intégré
+
+## Documentation du skill lui-même
+
+Installation, exemples d'invocation, dépannage, limites honnêtes et posture sécurité : voir [README.md](README.md) et le dossier [docs/](docs/) de ce dépôt.
+
+## Version
+
+Version actuelle : **0.4.0**. Historique complet des changements de comportement du skill : [CHANGELOG.md](CHANGELOG.md).
