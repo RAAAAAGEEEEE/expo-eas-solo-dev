@@ -33,7 +33,7 @@
       }
     },
     "production": {
-      "$comment": "autoIncrement gère le build number automatiquement — évite les conflits de version lors des soumissions répétées.",
+      "$comment": "autoIncrement gère le build number automatiquement — évite les conflits de version lors des soumissions répétées. resourceClass 'm-large' existe aussi (build iOS plus rapide) mais réservé aux plans EAS payants — rester sur 'm-medium' sur le plan gratuit.",
       "autoIncrement": true,
       "channel": "production",
       "ios": {

@@ -42,18 +42,18 @@ Deux façons de procéder :
 
 ### ⚠️ Piège du délai anti-vol iOS (le plus coûteux en temps si raté)
 
-La méthode par défaut (scanner un QR code / visiter un lien web pour installer un profil de provisioning) déclenche le délai de sécurité anti-vol d'Apple : **1 heure d'attente** avant de pouvoir installer un profil de provisioning hors d'un lieu "familier" (domicile/travail habituel).
+La méthode par défaut (scanner un QR code / visiter un lien web pour installer un profil de provisioning) peut déclencher un **"Security Delay" d'1 heure** — mais ce n'est pas un comportement universel de tous les iPhone : c'est spécifiquement le fait de la **Protection contre le vol d'appareil** (Stolen Device Protection, iOS 17.3+), une option qu'Apple recommande fortement mais qui n'est pas activée par défaut sur tous les téléphones. Le délai ne se déclenche que si cette option est activée **ET** que l'iPhone est hors d'un lieu "familier" (domicile/travail habituel) au moment de l'installation du profil. Demande à l'utilisateur s'il a activé cette protection (Réglages → Face ID et code → Protection contre le vol d'appareil) avant de t'attendre à ce piège précis — s'il ne l'a pas activée, l'installation via QR/web passe normalement sans délai.
 
-**Rescanner le QR code remet ce compteur à zéro.** Ne jamais faire rescanner l'utilisateur en pensant "relancer" la procédure — ça repart de 60 minutes.
+**Si le délai se déclenche : rescanner le QR code remet le compteur à zéro.** Ne jamais faire rescanner l'utilisateur en pensant "relancer" la procédure — ça repart de 60 minutes.
 
-**Contournement fiable sous Windows (zéro délai) :**
+**Contournement fiable sous Windows, qu'il y ait délai ou non (et donc à privilégier par défaut) :**
 1. Brancher l'iPhone en USB.
 2. Ouvrir l'app "Appareils Apple" (disponible sur Microsoft Store) ou iTunes.
 3. Cliquer plusieurs fois sur la ligne d'informations sous le nom de l'appareil (numéro de série par défaut) jusqu'à voir apparaître "UDID".
 4. Copier l'UDID.
 5. Dans `eas device:create`, choisir l'option **"Input — allows you to type in UDIDs"** (pas la méthode QR/web) et coller l'UDID.
 
-Cette méthode évite complètement le délai d'1h.
+Cette méthode passe par le simple couple confirmation Face ID/code + "faire confiance à cet ordinateur" lors du branchement — une action ponctuelle, pas la "Security Delay" d'1h qui ne vise que des changements de réglages de sécurité sensibles (mot de passe Apple, désactivation de Find My, etc.). Elle évite donc le risque de délai dans tous les cas, activé ou non.
 
 ## 5. Contrats et déclarations bloquants (souvent la cause d'un échec de build silencieux)
 
@@ -61,7 +61,7 @@ Erreur typique : `Failed to register bundle identifier... agreement updates that
 
 À vérifier au navigateur (jamais résolvable en CLI) :
 1. **Contrat "Apple Developer Program License Agreement"** à accepter sur https://developer.apple.com/account (souvent après un renouvellement annuel ou une mise à jour de contrat Apple).
-2. **Déclaration de statut "trader"** (obligation Digital Services Act de l'UE) à remplir sur https://appstoreconnect.apple.com.
+2. **Déclaration de statut "trader"** (obligation Digital Services Act de l'UE, articles 30-31) à remplir sur https://appstoreconnect.apple.com. Ce n'est pas une formalité optionnelle : depuis le 17 février 2025, toute app distribuée commercialement dans l'UE (payante, avec IAP, ou toute autre activité commerciale) **doit** avoir ce statut déclaré et vérifié — sans ça, Apple **retire automatiquement l'app de la vente dans les 27 pays de l'UE**, y compris une app déjà publiée et qui tournait bien jusque-là. Seul un développeur individuel non-commercial distribuant une app strictement gratuite peut légitimement se déclarer non-trader.
 
 ⚠️ Le statut "trader" rend les coordonnées (adresse, email) **publiques** sur la fiche App Store européenne de l'app. Proposer à l'utilisateur d'utiliser une adresse/email dédiés professionnels plutôt que personnels s'il en a la possibilité.
 
