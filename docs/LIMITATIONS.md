@@ -4,8 +4,8 @@ Honnêtes et non minimisées, comme l'exige le standard de documentation de ce d
 
 ## Couverture d'expérience
 
-- Ce skill est construit à partir d'**un seul projet réel de bout en bout** : Mysterymoji, une app **iOS**, Expo SDK 57. Le contenu iOS/EAS/Apple est donc beaucoup plus éprouvé que le contenu Android/Play Store, qui reste pour l'instant plus générique et moins testé en conditions réelles.
-- Certaines pistes sont explicitement marquées comme **non validées** dans le texte (ex. captures d'écran App Store sans Mac) — à ne pas traiter comme une procédure fiable tant que ce n'est pas confirmé.
+- Ce skill est construit à partir d'**un seul projet réel de bout en bout** : Mysterymoji, une app **iOS**. Le contenu iOS/EAS/Apple est donc beaucoup plus éprouvé que le contenu Android/Play Store, qui repose sur de la documentation vérifiée (règle des 12 testeurs, Play App Signing) mais n'a pas encore été traversé sur un cycle de publication complet.
+- Certaines procédures sont documentées à partir de sources officielles sans avoir été exécutées par l'auteur — notamment la recomposition de captures d'écran App Store et la publication Play Console. Le texte le signale là où c'est le cas.
 
 ## Pas de suite d'évaluation automatisée
 

@@ -12,7 +12,7 @@ Un utilisateur solo, non-développeur, qui délègue l'exécution technique à C
 
 ## Statut
 
-**Beta.** Construit et affiné sur un seul projet réel (Mysterymoji, iOS, Expo SDK 57) — voir [docs/LIMITATIONS.md](docs/LIMITATIONS.md) pour ce qui n'est pas encore éprouvé (notamment le pendant Android et les captures d'écran App Store sans Mac).
+**Beta.** Construit et affiné sur un seul projet réel (Mysterymoji, iOS, Expo SDK 57), complété par des audits documentaires avec vérification des sources officielles — voir [docs/LIMITATIONS.md](docs/LIMITATIONS.md) pour ce qui est documenté mais pas encore traversé en conditions réelles (notamment le cycle de publication Android complet).
 
 ## Prérequis
 
@@ -36,6 +36,7 @@ Rien à invoquer manuellement — le skill se déclenche automatiquement dès qu
 
 ## Ce que couvre le skill
 
+- Décisions à impact calendrier/revenus à prendre au jour 1 (règle Google Play des 12 testeurs, Small Business Program à 15 %, classification d'âge)
 - Choix de stack Expo (dépendances recommandées, `expo-av` à éviter, etc.)
 - Setup EAS Build/Submit et credentials Apple Developer/Google Play sans Mac
 - Enregistrement d'un appareil iOS sans passer par le piège du délai anti-vol
@@ -58,9 +59,9 @@ Ce skill manipule des instructions sur des secrets réels (tokens EAS, clés API
 
 ## Roadmap (non contractuelle)
 
-- Retour d'expérience Android complet (Play Console, signing, Play Billing).
-- Validation de la piste "captures d'écran App Store sans Mac" sur un vrai projet.
+- Retour d'expérience Android vécu de bout en bout (le contenu Play Console/signing est documenté mais pas encore éprouvé sur un cycle complet).
 - Ajout d'exemples de manifestes i18n/accessibilité complets.
+- Validation en conditions réelles de la procédure de recomposition des captures d'écran App Store.
 
 ## Contribuer
 

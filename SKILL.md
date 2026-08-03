@@ -1,6 +1,6 @@
 ---
 name: expo-eas-solo-dev
-description: Pilote le développement solo d'une app mobile Expo/React Native pour un utilisateur qui ne code pas lui-même et n'a PAS de Mac. Couvre le setup EAS Build/Submit, la gestion des credentials Apple Developer/Google Play, l'enregistrement d'appareils iOS, la conformité App Store/Play Store (Guideline 4.2, classification d'âge, IAP), la monétisation (RevenueCat), l'i18n et l'accessibilité mobile, et le choix de stack Expo. UTILISE CE SKILL dès que la conversation touche à : "eas build", "eas submit", "TestFlight", "App Store Connect", "bundle identifier", "certificat de distribution", "provisioning profile", "device UDID", "expo-router", "expo install", "@expo/ui", "boutons natifs Apple/Android", "SwiftUI"/"Jetpack Compose" côté React Native, "RevenueCat", "in-app purchase mobile", "Play Console", "app.json"/"eas.json", ou plus généralement toute app Expo/React Native — même si l'utilisateur ne prononce pas le mot "Expo" mais décrit un problème typique (ex. "mon build échoue avec une histoire d'agreement Apple", "comment enregistrer mon iPhone pour tester l'app", "quelle classification d'âge choisir"). NE PAS utiliser pour du développement natif SwiftUI/Kotlin avec un vrai Mac/Xcode disponible, ni pour du web pur sans composante mobile Expo/React Native.
+description: Pilote le développement solo d'une app mobile Expo/React Native pour un utilisateur qui ne code pas lui-même et n'a PAS de Mac. Couvre le setup EAS Build/Submit, la gestion des credentials Apple Developer/Google Play, l'enregistrement d'appareils iOS, la conformité App Store/Play Store (Guideline 4.2, classification d'âge, IAP), la monétisation (RevenueCat), l'i18n et l'accessibilité mobile, et le choix de stack Expo. UTILISE CE SKILL dès que la conversation touche à : "eas build", "eas submit", "TestFlight", "App Store Connect", "bundle identifier", "certificat de distribution", "provisioning profile", "device UDID", "expo-router", "expo install", "@expo/ui", "boutons natifs Apple/Android", "SwiftUI"/"Jetpack Compose" côté React Native, "RevenueCat", "in-app purchase mobile", "Play Console", "app.json"/"eas.json", "commission App Store", "Small Business Program", "captures d'écran App Store", "PrivacyInfo.xcprivacy", ou plus généralement toute app Expo/React Native — même si l'utilisateur ne prononce pas le mot "Expo" mais décrit un problème typique (ex. "mon build échoue avec une histoire d'agreement Apple", "comment enregistrer mon iPhone pour tester l'app", "quelle classification d'âge choisir", "mon app a été rejetée par Apple", "il me faut 12 testeurs pour publier sur Android ?"). NE PAS utiliser pour du développement natif SwiftUI/Kotlin avec un vrai Mac/Xcode disponible, ni pour du web pur sans composante mobile Expo/React Native.
 ---
 
 # Pilotage solo d'une app Expo/React Native sans Mac
@@ -15,6 +15,30 @@ L'utilisateur ne code pas et n'a pas de Mac. Ton rôle est celui d'un lead techn
 - **Aucune étape "sur Mac/Xcode"** : si une doc ou une habitude suggère Xcode, cherche systématiquement l'équivalent EAS Cloud ou une app Windows. Xcode n'existe pas dans cet environnement, point final.
 - **Ne devine jamais** une version de SDK Expo, un prix, ou une règle Apple/Google — ces éléments changent souvent. Vérifie l'info à jour (changelog Expo, docs Apple/Google) plutôt que de te fier à ta mémoire d'entraînement.
 - Si `gh` n'est pas installé et qu'un token GitHub est nécessaire, un jeton est parfois déjà en cache dans le Gestionnaire d'identifiants Windows : `cmdkey /list`, puis `git credential fill` (protocol=https, host=github.com) pour le récupérer et appeler l'API REST GitHub directement, plutôt que de redemander un nouveau token à l'utilisateur.
+
+## Décisions à prendre au jour 1 (délais longs ou impact financier direct)
+
+Ces trois points ne sont pas des détails de soumission : ils conditionnent le **calendrier** et les **revenus**. Les soulever au moment de la soumission, c'est trop tard. Les poser dès le cadrage, avant même le choix de stack.
+
+### 1. Compte Google Play : personnel ou organisation ? (impact : ~3 semaines de délai)
+
+Un compte développeur Google Play **personnel créé après le 13 novembre 2023** ne peut pas publier en production tant qu'il n'a pas fait tourner un **test fermé avec au moins 12 testeurs, opt-in en continu pendant 14 jours consécutifs** — et Google vérifie que ces testeurs ont réellement utilisé l'app, pas seulement cliqué sur "rejoindre". Les comptes **organisation** (enregistrés avec une entité légale, ex. une société) en sont **exemptés**.
+
+Conséquence concrète sur le planning : sur un compte personnel neuf, il faut compter **environ 3 semaines** entre "l'app est prête" et "l'app est en ligne" (14 jours de test fermé ininterrompu + demande d'accès production + revue Google, sans délai garanti). Si l'utilisateur a une structure légale, ouvrir un compte organisation supprime purement et simplement ce délai — c'est une vraie question à lui poser au démarrage, pas une formalité.
+
+⚠️ Le compteur de 14 jours doit être **ininterrompu et immédiatement antérieur** à la demande : si un testeur se désinscrit en cours de route et fait repasser sous les 12, le compteur repart. Prévoir une marge (recruter plus de 12 testeurs) plutôt que de viser juste. Ces chiffres et cette date d'entrée en vigueur bougent (le seuil est passé de 20 à 12 testeurs fin 2024) — revérifier sur [support.google.com/googleplay/android-developer](https://support.google.com/googleplay/android-developer/answer/14151465) plutôt que de citer ces valeurs comme définitives.
+
+### 2. App Store Small Business Program : 15 % au lieu de 30 % (impact : direct sur les revenus)
+
+Apple prélève **30 %** de commission par défaut, mais **15 %** pour les développeurs du Small Business Program — éligible si l'utilisateur a gagné moins d'1 M$ de revenus l'année civile précédente (donc : tout nouveau développeur l'est). **L'inscription n'est pas automatique** : il faut l'activer explicitement dans App Store Connect (compte Account Holder, accepter l'accord "Paid Apps"/Schedule 2 en vigueur, et déclarer les éventuels comptes développeur associés).
+
+Autrement dit, un développeur solo qui ne s'inscrit pas laisse **la moitié de sa commission** sur la table sans raison. À vérifier et proposer dès qu'une monétisation est envisagée, pas au premier versement.
+
+### 3. Classification d'âge : le système a changé en 2025
+
+Apple a remplacé les anciennes bandes 12+/17+ par **13+, 16+ et 18+** (4+ et 9+ conservées), et a ajouté au questionnaire des questions obligatoires sur les fonctionnalités sociales, les contrôles in-app, les thèmes médicaux/bien-être et la violence. Répondre à ce questionnaire mis à jour est **bloquant** : sans réponse, App Store Connect refuse les nouvelles soumissions et mises à jour.
+
+Le raisonnement de fond reste valable (une classification 13+ plutôt que "Conçu pour les enfants" 4+ évite les contraintes de parental gate COPPA sur un paywall) — mais ne cite jamais les anciennes valeurs 12+/17+, et fais remplir le questionnaire actuel plutôt que de supposer qu'une classification existante est encore à jour.
 
 ## Choix de stack (à la création du projet)
 
@@ -80,7 +104,8 @@ Checklist de soumission détaillée : [resources/appstore-submission-checklist.m
 Points à soulever **avant** de coder, pas en rattrapage :
 
 - **Guideline 4.2 "Minimum Functionality"** : une app mono-fonction simple risque le rejet comme "site web repackagé". À mitiger dès la conception : plusieurs contenus/thèmes, un mode jeu/défi, favoris/historique, partage natif (texte ET image via view-shot), réglages avec de vrais interrupteurs (haptique, animations, apparence, langue), onboarding.
-- **Classification d'âge 13+** (plutôt que "Conçu pour les enfants" 4+) autorise un paywall normal sans parental gate COPPA — c'est un choix délibéré à faire avec l'utilisateur si le public cible est ado/pré-ado et qu'on veut des IAP sans friction. Ne jamais orienter le produit vers "restriction parentale" sans que ce soit un choix conscient, car ça déclenche des règles plus strictes.
+- **Classification d'âge** : voir §Décisions à prendre au jour 1 — le système a changé en 2025 et le questionnaire mis à jour est bloquant pour toute soumission.
+- **Manifeste de confidentialité iOS (`PrivacyInfo.xcprivacy`)** : Apple l'exige pour déclarer les données collectées et les "required reason APIs" utilisées. Bonne nouvelle : les packages Expo embarquent déjà le leur, et les grosses libs tierces (RevenueCat, Sentry, Firebase...) aussi. Le piège : Apple ne parse pas correctement les manifestes de toutes les dépendances CocoaPods statiques — si la soumission est rejetée avec un avertissement de "required reasons" manquantes, la solution est de recopier les valeurs concernées dans la config du projet (`app.json` → `ios.privacyManifests`) en s'inspirant du `PrivacyInfo.xcprivacy` présent dans `node_modules/<lib>/ios/`. Voir [docs.expo.dev/guides/apple-privacy](https://docs.expo.dev/guides/apple-privacy/).
 - **Monétisation** : RevenueCat (react-native-purchases) encapsule StoreKit/Play Billing natif. Ne jamais proposer Stripe ou un autre processeur pour débloquer du contenu numérique in-app (règle Apple 3.1.1). Bouton "Restaurer les achats" obligatoire. Un champ code promo visible est attendu par les utilisateurs même avant d'être branché à un vrai back-end (les Offer Codes Apple viennent après, une fois un abonnement "Ready to Submit" dans App Store Connect).
 - **Répartition gratuit/premium** : garder la fonction cœur illimitée et gratuite — la plafonner est une cause fréquente de mauvaises notes ET de rejet "minimum functionality". Monétiser des à-côtés (contenus supplémentaires, plus de parties/jour, favoris illimités, export sans filigrane, personnalisation).
 - **Politique de confidentialité** : champ obligatoire à la soumission réelle, mais n'a pas besoin d'exister avant — ne bloque pas les phases amont dessus, trackez-la juste comme prérequis dur avant Submit. Rédige-la honnêtement (ex. "nous ne collectons aucune donnée directement ; Apple/RevenueCat traitent les données d'achat" plutôt qu'un "zéro donnée" mensonger si ce n'est pas littéralement vrai).
@@ -168,4 +193,4 @@ Installation, exemples d'invocation, dépannage, limites honnêtes et posture s�
 
 ## Version
 
-Version actuelle : **0.4.0**. Historique complet des changements de comportement du skill : [CHANGELOG.md](CHANGELOG.md).
+Version actuelle : **0.5.0**. Historique complet des changements de comportement du skill : [CHANGELOG.md](CHANGELOG.md).

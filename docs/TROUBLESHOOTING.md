@@ -16,5 +16,10 @@ Ce document indexe les pièges déjà documentés en détail ailleurs dans le sk
 | Erreur `parameter_error` sur un produit RevenueCat réel | Champ `subscription.duration` envoyé pour un produit App Store réel (réservé aux produits Test Store) | [resources/revenuecat-api-v2.md](../resources/revenuecat-api-v2.md) |
 | Expo Go refuse d'ouvrir le projet ("unsupported SDK version") | Expo Go publié en retard sur le SDK du projet | `SKILL.md` §Aperçu live sur téléphone |
 | Rejet App Store "site web repackagé" | Guideline 4.2 Minimum Functionality | [resources/appstore-submission-checklist.md](../resources/appstore-submission-checklist.md) |
+| App rejetée, on ne sait pas quoi faire | Réflexe d'appel formel au lieu de répondre au Resolution Center | [resources/appstore-submission-checklist.md](../resources/appstore-submission-checklist.md) §Si l'app est rejetée |
+| Impossible de publier en production sur Google Play | Compte personnel post-13/11/2023 : test fermé 12 testeurs / 14 jours obligatoire | `SKILL.md` §Décisions à prendre au jour 1 |
+| Soumission ou mise à jour bloquée sur App Store Connect | Questionnaire de classification d'âge 2025 non rempli | `SKILL.md` §Décisions à prendre au jour 1 |
+| Avertissement "required reasons API" à la soumission iOS | Manifeste de confidentialité incomplet (dépendance CocoaPods statique mal parsée) | `SKILL.md` §Conformité |
+| Commission Apple à 30 % au lieu de 15 % | Small Business Program non activé (inscription manuelle obligatoire) | `SKILL.md` §Décisions à prendre au jour 1 |
 
 Si un piège rencontré en pratique n'apparaît pas ici, c'est une bonne candidate de contribution — voir [../CONTRIBUTING.md](../CONTRIBUTING.md).

@@ -2,6 +2,26 @@
 
 Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Ce projet suit [SemVer](https://semver.org/lang/fr/).
 
+## [0.5.0] — 2026-08-03
+
+Audit stratégique et technique avec vérification web de chaque affirmation datée.
+
+### Ajouté
+
+- **Nouvelle section "Décisions à prendre au jour 1"** — trois points à impact calendrier ou financier qui étaient absents et arrivaient trop tard s'ils étaient découverts à la soumission :
+  - Règle Google Play des **12 testeurs / 14 jours** pour les comptes personnels créés après le 13/11/2023 (~3 semaines de délai ; comptes organisation exemptés).
+  - **App Store Small Business Program** (15 % au lieu de 30 % de commission, inscription manuelle obligatoire).
+  - Refonte du **système de classification d'âge Apple** (2025) et questionnaire bloquant.
+- **Manifeste de confidentialité iOS** (`PrivacyInfo.xcprivacy`) : cas des dépendances CocoaPods statiques mal parsées par Apple.
+- **Signature Android / Play App Signing** : distinction clé d'upload / clé de signature, et pourquoi elle protège d'une perte de clé définitive.
+- **Procédure en cas de rejet** : répondre au Resolution Center plutôt qu'appeler, quand l'appel se justifie, délais constatés.
+- Nouvelles entrées dans le tableau de dépannage et nouveaux déclencheurs dans la description du skill.
+
+### Corrigé
+
+- **Captures d'écran App Store** : la note "piste non validée" reposait sur une exigence obsolète. Apple ne demande plus qu'**une seule série iPhone 6.9"** (1320 × 2868) et met à l'échelle automatiquement — le problème "captures sans Mac" est largement caduc et ne justifie plus un Mac cloud.
+- Classification d'âge : suppression de toute référence implicite aux anciennes bandes 12+/17+.
+
 ## [0.4.0] — 2026-07-27
 
 - Documentation GitHub complète (README, LICENSE, CONTRIBUTING, SECURITY, docs/ARCHITECTURE/INSTALLATION/USAGE/CONFIGURATION/TROUBLESHOOTING/LIMITATIONS/PRIVACY_AND_SECURITY/LEGAL_AND_ATTRIBUTION) pour se conformer au standard de documentation du dépôt — absente jusqu'ici malgré la publication initiale.
