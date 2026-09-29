@@ -57,4 +57,4 @@ d'Apple pour ce projet. Confirme que tu veux continuer.
 
 ## Fixtures et évaluations
 
-Aucune suite d'évaluation automatisée n'accompagne ce skill — voir [LIMITATIONS.md](LIMITATIONS.md) pour la justification de ce choix.
+Cinq cas d'évaluation sont dans [`evals/evals.json`](../evals/evals.json) : chacun donne un prompt, la sortie attendue et une liste d'expectations à vérifier contre la réponse du skill. Ils ne sont pas exécutés automatiquement, voir [LIMITATIONS.md](LIMITATIONS.md).

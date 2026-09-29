@@ -14,6 +14,24 @@ Un utilisateur solo, non-développeur, qui délègue l'exécution technique à C
 
 **Beta.** Construit et affiné sur un seul projet réel (Mysterymoji, iOS, Expo SDK 57), complété par des audits documentaires avec vérification des sources officielles — voir [docs/LIMITATIONS.md](docs/LIMITATIONS.md) pour ce qui est documenté mais pas encore traversé en conditions réelles (notamment le cycle de publication Android complet).
 
+## En quoi il diffère du skill officiel `expo/skills`
+
+L'équipe Expo publie des skills officiels ([github.com/expo/skills](https://github.com/expo/skills), MIT, plugin Claude Code `expo@claude-plugins-official`). Au 2026-09-29, leur liste couvre le framework (Expo Router, animations, `@expo/ui`, mises à jour de SDK, modules natifs) et les services EAS (`eas-app-stores`, `eas-update`, `eas-workflows`...). Ils expliquent comment utiliser Expo et EAS correctement. Ils ne sont pas écrits pour une personne précise.
+
+Ce dépôt part de cette personne : quelqu'un qui **ne code pas** et **n'a pas de Mac**. La différence tient à trois choses.
+
+| | `expo/skills` (officiel) | `expo-eas-solo-dev` |
+| --- | --- | --- |
+| Public visé | Agent qui assiste un développeur | Agent qui pilote à la place d'un non-développeur |
+| Environnement | Non spécifique | Windows sans Mac : commandes PowerShell, jamais d'étape « sur Xcode », équivalent EAS Cloud à chaque fois |
+| Posture | Référence technique | STOP/GO avant toute action qui consomme un quota de build ou touche un compte réel |
+| Apple / Google | Build, soumission, TestFlight, métadonnées (`eas-app-stores`) | Pièges de compte et de calendrier : contrats Apple, statut trader DSA, appareil iOS sans Mac, règle Google Play des 12 testeurs, Small Business Program, classification d'âge, rejets |
+| Monétisation | Pas de skill dédié dans la liste vérifiée | RevenueCat (SDK et API v2), règle 3.1.1, restauration des achats |
+
+Les deux sont complémentaires : gardez l'officiel pour la référence technique à jour d'Expo et d'EAS, et celui-ci pour la conduite de projet d'un non-développeur sans Mac. En cas de contradiction sur un fait daté (version de SDK, quota, règle de store), la documentation Expo, Apple ou Google fait foi, et ce skill demande de la revérifier plutôt que de se fier à sa propre valeur écrite.
+
+Ce dépôt n'est pas affilié à Expo.
+
 ## Prérequis
 
 - [Claude Code](https://claude.com/claude-code) installé.
@@ -54,7 +72,7 @@ Ce skill manipule des instructions sur des secrets réels (tokens EAS, clés API
 ## Limites honnêtes
 
 - Écrit et validé sur **un seul projet réel** (iOS) — pas encore éprouvé sur un cycle Android complet de bout en bout.
-- Aucune suite d'évaluation automatisée (choix assumé, voir [docs/LIMITATIONS.md](docs/LIMITATIONS.md)) — la qualité repose sur la relecture humaine et l'usage réel.
+- Cinq cas d'évaluation dans [`evals/evals.json`](evals/evals.json), à passer à la main ou avec l'outil d'évals de skill-creator ; aucun harnais automatique ne les exécute encore (voir [docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
 - Les prix, quotas et règles Apple/Google cités sont datés de leur dernière vérification (voir CHANGELOG) — le skill lui-même consigne qu'il faut revérifier, pas se fier à la valeur écrite indéfiniment.
 
 ## Roadmap (non contractuelle)

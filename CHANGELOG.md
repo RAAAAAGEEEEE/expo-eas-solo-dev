@@ -2,6 +2,18 @@
 
 Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Ce projet suit [SemVer](https://semver.org/lang/fr/).
 
+## [0.5.1] — 2026-09-29
+
+### Ajouté
+
+- `evals/evals.json` : cinq cas d'évaluation (échec d'agreement Apple, enregistrement d'iPhone sans Mac, décisions du jour 1, refus de lancer un build « pour voir », hors périmètre SwiftUI avec Mac).
+- Frontmatter portable : `license`, `compatibility`, `metadata` (author, version, repository).
+- README : section « En quoi il diffère du skill officiel `expo/skills` ».
+
+### Modifié
+
+- `docs/LIMITATIONS.md` et `docs/USAGE.md` : ne disent plus qu'aucun eval n'existe ; précisent que les cas ne sont pas exécutés automatiquement.
+
 ## [0.5.0] — 2026-08-03
 
 Audit stratégique et technique avec vérification web de chaque affirmation datée.

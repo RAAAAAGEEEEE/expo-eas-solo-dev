@@ -1,6 +1,22 @@
 ---
 name: expo-eas-solo-dev
-description: Pilote le développement solo d'une app mobile Expo/React Native pour un utilisateur qui ne code pas lui-même et n'a PAS de Mac. Couvre le setup EAS Build/Submit, la gestion des credentials Apple Developer/Google Play, l'enregistrement d'appareils iOS, la conformité App Store/Play Store (Guideline 4.2, classification d'âge, IAP), la monétisation (RevenueCat), l'i18n et l'accessibilité mobile, et le choix de stack Expo. UTILISE CE SKILL dès que la conversation touche à : "eas build", "eas submit", "TestFlight", "App Store Connect", "bundle identifier", "certificat de distribution", "provisioning profile", "device UDID", "expo-router", "expo install", "@expo/ui", "boutons natifs Apple/Android", "SwiftUI"/"Jetpack Compose" côté React Native, "RevenueCat", "in-app purchase mobile", "Play Console", "app.json"/"eas.json", "commission App Store", "Small Business Program", "captures d'écran App Store", "PrivacyInfo.xcprivacy", ou plus généralement toute app Expo/React Native — même si l'utilisateur ne prononce pas le mot "Expo" mais décrit un problème typique (ex. "mon build échoue avec une histoire d'agreement Apple", "comment enregistrer mon iPhone pour tester l'app", "quelle classification d'âge choisir", "mon app a été rejetée par Apple", "il me faut 12 testeurs pour publier sur Android ?"). NE PAS utiliser pour du développement natif SwiftUI/Kotlin avec un vrai Mac/Xcode disponible, ni pour du web pur sans composante mobile Expo/React Native.
+description: >-
+  Pilote le développement solo d'une app mobile Expo/React Native pour un utilisateur qui ne code pas
+  lui-même et n'a PAS de Mac. Couvre EAS Build/Submit, credentials Apple Developer et Google Play,
+  enregistrement d'appareils iOS, conformité App Store/Play Store (Guideline 4.2, classification
+  d'âge, IAP), RevenueCat, i18n, accessibilité et choix de stack. À utiliser dès qu'il est question de
+  : eas build, eas submit, TestFlight, App Store Connect, bundle identifier, provisioning profile,
+  UDID, expo-router, @expo/ui, RevenueCat, Play Console, app.json, eas.json, Small Business Program,
+  PrivacyInfo.xcprivacy, ou de toute app Expo/React Native, même sans le mot Expo (ex. « mon build
+  échoue à cause d'un agreement Apple », « comment enregistrer mon iPhone », « mon app a été rejetée
+  par Apple », « faut-il 12 testeurs sur Android »). Ne pas utiliser pour du SwiftUI/Kotlin natif avec
+  un Mac et Xcode, ni pour du web pur.
+license: MIT
+compatibility: Conçu pour Claude Code sur Windows (commandes PowerShell), utilisable sur macOS et Linux avec adaptation des commandes. Nécessite Node.js et npm pour exécuter Expo CLI et EAS CLI, un accès réseau pour EAS et les vérifications de règles Apple/Google, et des comptes Expo, Apple Developer et Google Play pour les étapes de publication (pas pour installer le skill).
+metadata:
+  author: Anto1nx
+  version: "0.5.1"
+  repository: https://github.com/RAAAAAGEEEEE/expo-eas-solo-dev
 ---
 
 # Pilotage solo d'une app Expo/React Native sans Mac
@@ -193,4 +209,4 @@ Installation, exemples d'invocation, dépannage, limites honnêtes et posture s�
 
 ## Version
 
-Version actuelle : **0.5.0**. Historique complet des changements de comportement du skill : [CHANGELOG.md](CHANGELOG.md).
+Version actuelle : **0.5.1**. Historique complet des changements de comportement du skill : [CHANGELOG.md](CHANGELOG.md).

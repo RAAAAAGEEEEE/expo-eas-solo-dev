@@ -7,10 +7,10 @@ Honnêtes et non minimisées, comme l'exige le standard de documentation de ce d
 - Ce skill est construit à partir d'**un seul projet réel de bout en bout** : Mysterymoji, une app **iOS**. Le contenu iOS/EAS/Apple est donc beaucoup plus éprouvé que le contenu Android/Play Store, qui repose sur de la documentation vérifiée (règle des 12 testeurs, Play App Signing) mais n'a pas encore été traversé sur un cycle de publication complet.
 - Certaines procédures sont documentées à partir de sources officielles sans avoir été exécutées par l'auteur — notamment la recomposition de captures d'écran App Store et la publication Play Console. Le texte le signale là où c'est le cas.
 
-## Pas de suite d'évaluation automatisée
+## Évaluations non automatisées
 
-Ce skill n'a pas d'`evals/` ni de benchmark quantitatif. Choix assumé : c'est un skill de connaissances/procédures (pas de génération de fichier vérifiable objectivement), pour lequel la méthodologie standard d'évaluation par comparaison avec/sans skill apporterait peu — la qualité dépend de la justesse factuelle du contenu, pas d'un format de sortie mesurable. La vérification repose sur :
-- la relecture humaine ;
+`evals/evals.json` contient cinq cas (prompt, sortie attendue, expectations vérifiables) au format `evals.json` de skill-creator. Ils n'ont pas été exécutés par un harnais : aucun résultat chiffré n'est publié. La vérification repose donc surtout sur :
+- la relecture humaine des cas contre la réponse du skill ;
 - des audits ponctuels avec recherche web pour vérifier les faits datés (voir CHANGELOG) ;
 - l'usage réel sur de nouveaux projets, qui remonte les erreurs.
 

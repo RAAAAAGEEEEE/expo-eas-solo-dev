@@ -1,0 +1,69 @@
+{
+  "skill_name": "expo-eas-solo-dev",
+  "description": "Cases for a non-coding user without a Mac. Format follows the skill-creator evals.json convention: read each prompt, run it with and without the skill, then check every expectation against the reply. Not run automatically.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "apple-agreement-build-failure",
+      "prompt": "Mon build EAS iOS echoue avec 'Failed to register bundle identifier ... agreement updates that must be resolved'. Je suis sur Windows, je n'ai pas de Mac. Que dois-je faire ?",
+      "expected_output": "Identifies a missing Apple agreement and/or missing DSA trader status, resolved in the browser only.",
+      "files": [],
+      "expectations": [
+        "Names a pending Apple Developer Program agreement (developer.apple.com/account) as a probable cause",
+        "Names the EU Digital Services Act trader declaration in App Store Connect as the other probable cause",
+        "States that both are fixed in a web browser, not with a CLI command or Xcode",
+        "Does not suggest Xcode or any step that needs a Mac"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "register-iphone-without-mac",
+      "prompt": "Comment j'enregistre mon iPhone pour tester mon app Expo ? Je suis sous Windows.",
+      "expected_output": "Recommends the USB UDID method and warns against rescanning the QR code.",
+      "files": [],
+      "expectations": [
+        "Recommends retrieving the device UDID over a USB cable (Apple Devices app or iTunes) rather than the default QR method",
+        "Warns that rescanning the QR code restarts the one-hour delay when Stolen Device Protection applies",
+        "Gives commands or steps usable on Windows PowerShell, not bash-only shortcuts",
+        "Explains jargon such as UDID in one sentence when it first appears"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "day-one-decisions-before-coding",
+      "prompt": "Je veux publier une petite app de quiz avec un abonnement sur iOS et Android, en solo, sans savoir coder. Par ou on commence ?",
+      "expected_output": "Raises the calendar and revenue decisions before choosing the stack.",
+      "files": [],
+      "expectations": [
+        "Raises the Google Play requirement for personal developer accounts (closed test with 12 testers over 14 consecutive days) and its calendar impact",
+        "Raises the App Store Small Business Program (15 percent instead of 30 percent) and that enrollment is manual",
+        "Mentions the updated Apple age rating questionnaire, without citing the old 12+ or 17+ bands",
+        "Proposes RevenueCat for the subscription and does not propose Stripe for unlocking in-app digital content",
+        "Asks for confirmation before any action that spends EAS build quota or touches a real Apple, Google or payment account"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "no-build-just-to-see",
+      "prompt": "Lance un build de production iOS sur EAS pour voir si ca passe, on verra bien.",
+      "expected_output": "Stops and asks for confirmation before consuming build quota.",
+      "files": [],
+      "expectations": [
+        "Does not run a production build immediately",
+        "Explains that an EAS build consumes a limited monthly quota and shows what will happen",
+        "Asks for an explicit go before launching, or proposes a cheaper check first"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "out-of-scope-native-swift-with-mac",
+      "prompt": "J'ai un MacBook avec Xcode et je veux ecrire une app 100 pour 100 native en SwiftUI, sans React Native. Aide-moi a structurer le projet.",
+      "expected_output": "The skill does not apply; the answer must not force an Expo or no-Mac workflow.",
+      "files": [],
+      "expectations": [
+        "Does not impose Expo, EAS or a no-Mac workflow on a user who has a Mac and wants pure SwiftUI",
+        "Answers the SwiftUI project structure question directly"
+      ]
+    }
+  ]
+}
